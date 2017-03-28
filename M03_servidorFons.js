@@ -25,7 +25,7 @@ app.listen(8888);
 function onRequest(req, res) {
     var pathname = url.parse(req.url).pathname;
     if (pathname == '/') {
-        fs.readFile(__dirname + '/M02_fons.html',
+        fs.readFile(__dirname + '/M03_fons.html',
             function (err, data) {
                 if (err) {
                     res.writeHead(500);
@@ -35,8 +35,8 @@ function onRequest(req, res) {
                 res.end(data);
             });
 
-    } else if (pathname == '/M02_fons.js') {
-        fs.readFile(__dirname + '/M02_fons.js',
+    } else if (pathname == '/M03_fons.js') {
+        fs.readFile(__dirname + '/M03_fons.js',
             function (err, data) {
                 if (err) {
                     res.writeHead(500);
