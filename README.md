@@ -10,6 +10,9 @@
 <li> Echo Simple Sample with interval Server -> Client </li>
 <li> Remote change of browser background color, Broadcasting</li>
 <li> Chat with ExpressJS</li>
+  <li> HTTPS</li>
+  <li> HTTPS and WSS</li>
+  <li> HTTP/2</li>
 <li> WebSockets with JavaEE</li>
 </ol>
 
