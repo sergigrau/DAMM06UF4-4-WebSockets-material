@@ -21,7 +21,7 @@ const app = express()
 app.get('/', function (req, res) {
   res.send('hola HTTPS')
 })
-cle
+
 https.createServer({
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.cert')

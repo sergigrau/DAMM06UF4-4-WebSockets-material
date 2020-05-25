@@ -16,9 +16,9 @@
 	Desenvolupament en entorn client. Escola del Clot
  */
 
-var express = require("express");
-var app = express();
-var port = 8888;
+const express = require("express");
+let app = express();
+let port = 8888;
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
@@ -28,7 +28,7 @@ app.get("/", function(req, res){
     res.render("index");
 });
  
-var io = require('socket.io').listen(app.listen(port));
+const io = require('socket.io').listen(app.listen(port));
 console.log("Listening on port " + port);
 
 io.sockets.on('connection', function (socket) {
