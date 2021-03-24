@@ -14,7 +14,7 @@
  * ORIGEN
  * Desenvolupament Aplicacions Web. Jesuïtes el Clot
  */
-var socket = io.connect('http://localhost:8888');
+const socket = io();
 
 socket.on('rgb', function (data) {
     console.log('CLIENT -> dades rebudes del servidor->' + data.r);

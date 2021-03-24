@@ -14,10 +14,11 @@
  * ORIGEN
  * Desenvolupament Aplicacions Web. Jesuïtes el Clot
  */
-var app = require('http').createServer(onRequest);
-var io = require('socket.io').listen(app);
-var fs = require('fs');
-var url = require("url");
+const app = require('http').createServer(onRequest);
+const io = require('socket.io')(app);
+
+const fs = require('fs');
+const url = require("url");
 
 console.log('servidor iniciat');
 app.listen(8888);
@@ -68,7 +69,7 @@ function enviarMissatges(socket,data){
             b: data.b
         });  
 }
-io.sockets.on('connection', function (socket) {
+io.on('connection', function (socket) {
     socket.on('r', function (data) {
         console.log('SERVIDOR -> dades rebudes del client->' + data.r);
         enviarMissatges(socket,data);
