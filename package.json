@@ -1,11 +1,9 @@
 {
-  "name": "socketio",
+  "name": "daw2-websockets",
   "version": "0.0.1",
-  "private": true,
-  
+  "description": "sergi.grau@fje.edu",
   "dependencies": {
-    "express": "*",
-    "jade": "*",
-    "socket.io": "*"
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
   }
 }

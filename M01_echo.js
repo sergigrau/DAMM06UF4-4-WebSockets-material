@@ -1,18 +1,18 @@
 /*
  * comunicacions amb backend amb Node i WebSockets
  * @author  sergi.grau@fje.edu
- * @version 2.0 19.02.2016
+ * @version 1.0 24.03.2021
  * format del document UTF-8
  *
  * CHANGELOG
- * 19.02.2016
+ * 24.03.2021
  * - comunicacions amb backend amb Node i WebSockets
  *
  * NOTES
  * ORIGEN
  * Desenvolupament Aplicacions Web. Jesuïtes el Clot
  */
-var socket = io.connect('http://localhost:8888');
+const socket = io();
 socket.emit('dadesDesDelClient', {
     dades: '123456'
 });
