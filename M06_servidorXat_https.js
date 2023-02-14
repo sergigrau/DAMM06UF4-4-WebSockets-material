@@ -14,28 +14,28 @@
  */
 
 
-const express = require("express");
+const express = require('express')
 const fs = require('fs')
 const https = require('https')
+const app = express()
+const io = require('socket.io')(https);
 
-let app = express();
-let port = 8888;
+app.use(require('express').static('public'));
 
-app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', "jade");
 app.engine('jade', require('jade').__express);
 app.get("/", function(req, res){
     res.render("index_https");
 });
- 
 
-
-const io = require('socket.io').listen(https.createServer({
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
-}, app).listen(port));
-console.log("Listening on port " + port);
+https.createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+  }, app)
+  .listen(3000, function () {
+    console.log('Exemple https://172.20.0.199:3000/')
+  })
 
 io.sockets.on('connection', function (socket) {
     socket.emit('missatge', { missatge: 'Benvingut' });

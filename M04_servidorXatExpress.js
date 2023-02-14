@@ -16,24 +16,25 @@
 	Desenvolupament en entorn client. Escola del Clot
  */
 
-const express = require("express");
-let app = express();
-let port = 8888;
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-app.use(express.static(__dirname + '/public'));
+app.use(require('express').static('public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', "jade");
 app.engine('jade', require('jade').__express);
-app.get("/", function(req, res){
-    res.render("index");
+app.get("/", function (req, res) {
+	res.render("index");
 });
- 
-const io = require('socket.io').listen(app.listen(port));
-console.log("Listening on port " + port);
+
+http.listen(3000, () => {
+	console.log('escoltant en *:3000');
+});
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('missatge', { missatge: 'Benvingut' });
-    socket.on('enviar', function (data) {
-        io.sockets.emit('missatge', data);
-    });
+	socket.emit('missatge', { missatge: 'Benvingut' });
+	socket.on('enviar', function (data) {
+		io.sockets.emit('missatge', data);
+	});
 });
